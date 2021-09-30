@@ -8,13 +8,16 @@
      <body style="font-family:Arial; margin: 0;">
          <?php
 
+             $connectionInfo = array("UID" => "jscott11", "pwd" => "3557321Joh--", "Database" => "lms", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+             $serverName = "tcp:jscottlms.database.windows.net,1433";
+             $database = sqlsrv_connect($serverName, $connectionInfo);
              if (!($database = new mysqli("127.0.0.1:3306", "root", "3557321Joh--", "lms"))){
                  echo "Failed to connect";
              }
 
              $xml = simplexml_load_file("material.xml");
 
-             $database->query("DELETE FROM lms.content");
+             $database->sqlsrv_query("DELETE FROM lms.content");
 
              foreach($xml->course as $course){
                  foreach($course->unit as $unit){
@@ -31,7 +34,7 @@
 
              $xml = simplexml_load_file("questions.xml");
 
-             $database->query("DELETE FROM lms.questions");
+             $database->sqlsrv_query("DELETE FROM lms.questions");
 
              foreach($xml->course as $course){
                 $num = $course->number;
@@ -39,7 +42,7 @@
                 foreach($course->question as $question){
                     $text = $question->text;
                     $query = "INSERT INTO lms.questions (course, question, answera, answerb, answerc, answerd, correct, courseName) VALUES (" . $num . " , '" . $text . "', '" . $question->answera->letter . ": " . $question->answera->text . "', '" . $question->answerb->letter . ": " . $question->answerb->text . "', '" . $question->answerc->letter . ": " . $question->answerc->text . "', '" . $question->answerd->letter . ": " . $question->answerd->text . "', '" . $question->correct . "', '" . $name . "')";
-                    $database->query($query);
+                    $database->sqlsrv_query($query);
                 }
              }
          ?>
