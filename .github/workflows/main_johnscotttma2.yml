@@ -34,7 +34,7 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: ../../part2/start.php
+          name: ../../TMA2/part2/start.php
           path: .
 
   deploy:
@@ -48,7 +48,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: ../../part2/start.php
+          name: ../../TMA2/part2/start.php
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
