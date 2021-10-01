@@ -34,7 +34,7 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: php-app
+          name: part2/start.php
           path: .
 
   deploy:
