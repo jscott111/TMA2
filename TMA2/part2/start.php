@@ -9,10 +9,14 @@
          <?php
 
              $connectionInfo = array("UID" => "jscott11", "pwd" => "3557321Joh--", "Database" => "lms", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+             echo "Connection Info";
              $serverName = "tcp:jscott11.database.windows.net,1433";
+             echo "<br>Server Name";
              $database = sqlsrv_connect($serverName, $connectionInfo);
-
+             echo "<br>Database Connected";
+      
              $xml = simplexml_load_file("material.xml");
+             echo "<br>XML File Loaded";
 
              $database->sqlsrv_query("DELETE FROM dbo.content");
 
