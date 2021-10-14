@@ -19,6 +19,7 @@
              echo "<br>XML File Loaded";
 
              $database->sqlsrv_query("DELETE FROM dbo.content");
+             echo "<br>Delete content";
 
              foreach($xml->course as $course){
                  foreach($course->unit as $unit){
@@ -27,6 +28,7 @@
                      }
                  }
              }
+             echo "<br>Content added";
 
       
       
