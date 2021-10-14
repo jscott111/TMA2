@@ -9,7 +9,7 @@
          <?php
 
              $connectionInfo = array("UID" => "jscott11", "pwd" => "3557321Joh--", "Database" => "lms", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
-             $serverName = "tcp:jscottlms.database.windows.net,1433";
+             $serverName = "tcp:jscott11.database.windows.net,1433";
              if (!($database = sqlsrv_connect($serverName, $connectionInfo))){
                  echo "Failed to connect";
              }
