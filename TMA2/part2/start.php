@@ -22,6 +22,7 @@
              echo "<br>Delete content";
 
              foreach($xml->course as $course){
+                 echo $course;
                  foreach($course->unit as $unit){
                      foreach($unit->subUnit as $subUnit){
                         sqlsrv_query($database, "INSERT INTO dbo.content (code, unit, subunit, content, name) VALUES (" . $course->code . " , " . $unit->title . ", " . $subUnit->number . ", '" . $subUnit->content . "', '" . $course->name . "')");
