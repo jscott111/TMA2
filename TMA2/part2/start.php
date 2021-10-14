@@ -11,7 +11,7 @@
              $connectionInfo = array("UID" => "jscott11", "pwd" => "3557321Joh--", "Database" => "lms", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
              $serverName = "tcp:jscott11.database.windows.net,1433";
              if (!($database = sqlsrv_connect($serverName, $connectionInfo))){
-                 echo "Failed to connect";
+                 echo "Failed to connect1";
              }
 
              $xml = simplexml_load_file("material.xml");
@@ -28,7 +28,7 @@
 
 
              if (!($database = new mysqli("127.0.0.1:3306", "root", "3557321Joh--", "lms"))){
-                 echo "Failed to connect";
+                 echo "Failed to connect2";
              }
 
              $xml = simplexml_load_file("questions.xml");
