@@ -10,8 +10,7 @@
 
              $connectionInfo = array("UID" => "jscott11", "pwd" => "3557321Joh--", "Database" => "lms", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
              $serverName = "tcp:jscottlms.database.windows.net,1433";
-             $database = sqlsrv_connect($serverName, $connectionInfo);
-             if (!($database = new mysqli("127.0.0.1:3306", "root", "3557321Joh--", "lms"))){
+             if (!($database = sqlsrv_connect($serverName, $connectionInfo))){
                  echo "Failed to connect";
              }
 
