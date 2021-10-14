@@ -10,37 +10,32 @@
 
              $connectionInfo = array("UID" => "jscott11", "pwd" => "3557321Joh--", "Database" => "lms", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
              $serverName = "tcp:jscott11.database.windows.net,1433";
-             if (!($database = sqlsrv_connect($serverName, $connectionInfo))){
-                 echo "Failed to connect1";
-             }
+             $database = sqlsrv_connect($serverName, $connectionInfo);
 
              $xml = simplexml_load_file("material.xml");
 
-             $database->sqlsrv_query("DELETE FROM lms.content");
+             $database->sqlsrv_query("DELETE FROM dbo.content");
 
              foreach($xml->course as $course){
                  foreach($course->unit as $unit){
                      foreach($unit->subUnit as $subUnit){
-                        $database->sqlsrv_query("INSERT INTO lms.content (code, unit, subunit, content, name) VALUES (" . $course->code . " , " . $unit->title . ", " . $subUnit->number . ", '" . $subUnit->content . "', '" . $course->name . "')");
+                        $database->sqlsrv_query("INSERT INTO dbo.content (code, unit, subunit, content, name) VALUES (" . $course->code . " , " . $unit->title . ", " . $subUnit->number . ", '" . $subUnit->content . "', '" . $course->name . "')");
                      }
                  }
              }
 
-
-             if (!($database = new mysqli("127.0.0.1:3306", "root", "3557321Joh--", "lms"))){
-                 echo "Failed to connect2";
-             }
-
+      
+      
              $xml = simplexml_load_file("questions.xml");
 
-             $database->sqlsrv_query("DELETE FROM lms.questions");
+             $database->sqlsrv_query("DELETE FROM dbo.questions");
 
              foreach($xml->course as $course){
                 $num = $course->number;
                 $name = $course->name;
                 foreach($course->question as $question){
                     $text = $question->text;
-                    $query = "INSERT INTO lms.questions (course, question, answera, answerb, answerc, answerd, correct, courseName) VALUES (" . $num . " , '" . $text . "', '" . $question->answera->letter . ": " . $question->answera->text . "', '" . $question->answerb->letter . ": " . $question->answerb->text . "', '" . $question->answerc->letter . ": " . $question->answerc->text . "', '" . $question->answerd->letter . ": " . $question->answerd->text . "', '" . $question->correct . "', '" . $name . "')";
+                    $query = "INSERT INTO dbo.questions (course, question, answera, answerb, answerc, answerd, correct, courseName) VALUES (" . $num . " , '" . $text . "', '" . $question->answera->letter . ": " . $question->answera->text . "', '" . $question->answerb->letter . ": " . $question->answerb->text . "', '" . $question->answerc->letter . ": " . $question->answerc->text . "', '" . $question->answerd->letter . ": " . $question->answerd->text . "', '" . $question->correct . "', '" . $name . "')";
                     $database->sqlsrv_query($query);
                 }
              }
