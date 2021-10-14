@@ -21,7 +21,7 @@
              foreach($xml->course as $course){
                  foreach($course->unit as $unit){
                      foreach($unit->subUnit as $subUnit){
-                        $database->query("INSERT INTO lms.content (code, unit, subunit, content, name) VALUES (" . $course->code . " , " . $unit->title . ", " . $subUnit->number . ", '" . $subUnit->content . "', '" . $course->name . "')");
+                        $database->sqlsrv_query("INSERT INTO lms.content (code, unit, subunit, content, name) VALUES (" . $course->code . " , " . $unit->title . ", " . $subUnit->number . ", '" . $subUnit->content . "', '" . $course->name . "')");
                      }
                  }
              }
