@@ -1,3 +1,3 @@
 <?php
-  echo "Hello World";
+  header("Location: TMA2/part2/start.php");
 ?>
