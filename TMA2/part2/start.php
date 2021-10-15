@@ -14,7 +14,10 @@
       
              $xml = simplexml_load_file("material.xml");
 
-             sqlsrv_query($database, "DELETE FROM [dbo].[material]");
+             $getResults = sqlsrv_query($database, "DELETE FROM [dbo].[material]");
+             if ($getResults == FALSE){
+                echo (sqlsrv_errors());
+             }
 
              foreach($xml->course as $course){
                  foreach($course->unit as $unit){
