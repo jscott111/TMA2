@@ -14,12 +14,12 @@
       
              $xml = simplexml_load_file("material.xml");
 
-             sqlsrv_query($database, "DELETE FROM [dbo].[courseContent]");
+             sqlsrv_query($database, "DELETE FROM [dbo].[material]");
 
              foreach($xml->course as $course){
                  foreach($course->unit as $unit){
                      foreach($unit->subUnit as $subUnit){
-                        sqlsrv_query($database, "INSERT INTO [dbo].[courseContent] (code, unit, subunit, courseContent, courseName) VALUES (" . $course->code . " , " . $unit->title . ", " . $subUnit->number . ", '" . $subUnit->content . "', '" . $course->name . "')");
+                        sqlsrv_query($database, "INSERT INTO [dbo].[material] (code, unit, subunit, courseContent, courseName) VALUES (" . $course->code . " , " . $unit->title . ", " . $subUnit->number . ", '" . $subUnit->content . "', '" . $course->name . "')");
                      }
                  }
              }
