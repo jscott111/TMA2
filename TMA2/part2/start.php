@@ -14,7 +14,7 @@
       
              $xml = simplexml_load_file("material.xml");
 
-             sqlsrv_query($database, "DELETE FROM dbo.content");
+             sqlsrv_query($database, "DELETE FROM dbo.content;");
 
              foreach($xml->course as $course){
                  echo $course->name;
