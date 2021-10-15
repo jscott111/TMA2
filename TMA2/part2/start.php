@@ -35,7 +35,7 @@
       
              $xml = simplexml_load_file("questions.xml");
 
-             $database->sqlsrv_query("DELETE FROM dbo.questions");
+             sqlsrv_query($database, "DELETE FROM dbo.questions");
 
              foreach($xml->course as $course){
                 $num = $course->number;
@@ -43,7 +43,7 @@
                 foreach($course->question as $question){
                     $text = $question->text;
                     $query = "INSERT INTO dbo.questions (course, question, answera, answerb, answerc, answerd, correct, courseName) VALUES (" . $num . " , '" . $text . "', '" . $question->answera->letter . ": " . $question->answera->text . "', '" . $question->answerb->letter . ": " . $question->answerb->text . "', '" . $question->answerc->letter . ": " . $question->answerc->text . "', '" . $question->answerd->letter . ": " . $question->answerd->text . "', '" . $question->correct . "', '" . $name . "')";
-                    $database->sqlsrv_query($query);
+                    sqlsrv_query($database, $query);
                 }
              }
          ?>
