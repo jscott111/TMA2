@@ -17,17 +17,17 @@
                  die(print_r($e));
              }
 
-            $result = $database->query("SELECT grade FROM [lms].[grades] WHERE user='" . $user . "' AND course=" . $course);
+            $result = $database->query("SELECT grade FROM [dbo].[grades] WHERE user='" . $user . "' AND course=" . $course);
             foreach($result as $results){
                 $DBGrade = $results['grade'];
             }
 
             if($grade > $DBGrade){
                 if($result->num_rows == 0){
-                    $database->query("INSERT INTO [lms].[grades] (user, course, grade) VALUES ('" . $user . "', " . $course . ", " . $grade . ")");
+                    $database->query("INSERT INTO [dbo].[grades] (user, course, grade) VALUES ('" . $user . "', " . $course . ", " . $grade . ")");
                 }
                 else{
-                    $database->query("UPDATE [lms].[grades] SET grade=" . $grade . " WHERE user='" . $user . "' AND course=" . $course);
+                    $database->query("UPDATE [dbo].[grades] SET grade=" . $grade . " WHERE user='" . $user . "' AND course=" . $course);
                 }
             }
             echo "<form id='homeForm' action='home.php' method='POST'>";
