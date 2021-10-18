@@ -35,15 +35,14 @@
 
              $conn->query("DELETE FROM [dbo].[questions]");
 
-             echo $conn->errorInfo();
-//              foreach($xml->course as $course){
-//                 $num = $course->number;
-//                 $name = $course->name;
-//                 foreach($course->question as $question){
-//                     $text = $question->text;
-//                     $conn->query("INSERT INTO [dbo].[questions] (course, question, answera, answerb, answerc, answerd, correct, courseName) VALUES (" . $num . " , '" . $text . "', '" . $question->answera->letter . ": " . $question->answera->text . "', '" . $question->answerb->letter . ": " . $question->answerb->text . "', '" . $question->answerc->letter . ": " . $question->answerc->text . "', '" . $question->answerd->letter . ": " . $question->answerd->text . "', '" . $question->correct . "', '" . $name . "')");
-//                 }
-//              }
+             foreach($xml->course as $course){
+                $num = $course->number;
+                $name = $course->name;
+                foreach($course->question as $question){
+                    $text = $question->text;
+                    $conn->query("INSERT INTO [dbo].[questions] (course, question, answera, answerb, answerc, answerd, correct, courseName) VALUES (" . $num . " , '" . $text . "', '" . $question->answera->letter . ": " . $question->answera->text . "', '" . $question->answerb->letter . ": " . $question->answerb->text . "', '" . $question->answerc->letter . ": " . $question->answerc->text . "', '" . $question->answerd->letter . ": " . $question->answerd->text . "', '" . $question->correct . "', '" . $name . "')");
+                }
+             }
          ?>
          <div class="header">
              <h2 style = "margin-left: 15px;">Learning Management System</h2>
