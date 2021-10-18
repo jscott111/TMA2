@@ -35,7 +35,7 @@
                 if(!$exists){
                     $sql = "INSERT INTO [dbo].[users] (username, pword) VALUES ('" . $username . "', '" . $password . "');";
 
-                    if(!($$conn->query($sql))){
+                    if(!($conn->query($sql))){
                         echo "<h3 style='margin-left: 20px; margin-top: 20px; color: red;'>Error creating your account, username and password must not be null</h3>";
                     }else{
                         navBar($username, $password);
@@ -44,7 +44,7 @@
                     echo "<h3 style='margin-left: 20px; margin-top: 20px; color: red;'>Username already exists<br>Please try another username</h3>";
                 }
             }else if(isset($_POST['login'])){
-                if(!($$conn->query("SELECT id FROM [dbo].[users] WHERE username='" . $username . "' AND pword='" . $password . "'"))){
+                if(!($conn->query("SELECT id FROM [dbo].[users] WHERE username='" . $username . "' AND pword='" . $password . "'"))){
                     echo "<h3 style='margin-left: 20px; margin-top: 20px; color: red;'>Incorrect username or password</h3>";
                 }else{
                     navBar($username, $password);
@@ -63,17 +63,17 @@
                     die(print_r($e));
                 }
                 
-                $courses = $$conn->query("SELECT DISTINCT code, name FROM [dbo].[material]");
+                $courses = $conn->query("SELECT DISTINCT code, name FROM [dbo].[material]");
                 echo "<div class='col-md-5 col-lg-5'>";
                 echo "<div class='mainmenu nav'><ul id='nav'>";
                 foreach($courses as $course){
                     echo "<li class='menuborder'><a>" . $course['name'] . "</a><ul>";
-                    $units = $$conn->query("SELECT DISTINCT unit FROM [dbo].[material] WHERE code='" . $course['code'] . "'");
+                    $units = $conn->query("SELECT DISTINCT unit FROM [dbo].[material] WHERE code='" . $course['code'] . "'");
                     foreach($units as $unit){
                         echo "<li class='sub-sub-menu'><a>" . $unit['unit'] . "</a><ul>";
-                        $subunits = $$conn->query("SELECT DISTINCT subunit FROM [dbo].[material] WHERE code='" . $course['code'] . "' AND unit='" . $unit['unit'] . "'");
+                        $subunits = $conn->query("SELECT DISTINCT subunit FROM [dbo].[material] WHERE code='" . $course['code'] . "' AND unit='" . $unit['unit'] . "'");
                         foreach($subunits as $subunit){
-                            $result = $$conn->query("SELECT content FROM [dbo].[material] WHERE code='" . $course['code'] . "' AND unit='" . $unit['unit'] . "' AND subunit='" . $subunit['subunit'] . "'");
+                            $result = $conn->query("SELECT content FROM [dbo].[material] WHERE code='" . $course['code'] . "' AND unit='" . $unit['unit'] . "' AND subunit='" . $subunit['subunit'] . "'");
                             foreach($result as $content){
                                 $cont = $content['content'];
                             }
@@ -85,7 +85,7 @@
                     echo "</ul></li>";
                 }
                 echo "<li class='menuborder'><a>Quizes</a><ul>";
-                $quiz = $$conn->query("SELECT DISTINCT course, courseName FROM [dbo].[questions]");
+                $quiz = $conn->query("SELECT DISTINCT course, courseName FROM [dbo].[questions]");
                 foreach($quiz as $quiz){
                     $quizString = quizWriter($quiz['course'], $username, $password);
                     echo "<li class='menuborder'><a href='javascript:display(\"$quizString\")'>" . $quiz['courseName'] . "</a><ul>";
@@ -108,7 +108,7 @@
                     die(print_r($e));
                 }
 
-                $question = $$conn->query("SELECT question, answera, answerb, answerc, answerd, correct FROM [dbo].[questions] WHERE course = " . $course);
+                $question = $conn->query("SELECT question, answera, answerb, answerc, answerd, correct FROM [dbo].[questions] WHERE course = " . $course);
                 foreach($question as $question){
                     $counter++;
                     $string .= "<div><h3>" . $counter . ". " . $question['question'] . "</h3></div>";
@@ -126,7 +126,7 @@
                 }
 
                 $grade = 0;
-                $result = $$conn->query("SELECT grade FROM [dbo].[grades] WHERE user='" . $username . "' AND course=" . $course);
+                $result = $conn->query("SELECT grade FROM [dbo].[grades] WHERE user='" . $username . "' AND course=" . $course);
                 foreach($result as $result){
                     $grade = $result['grade'];
                 }
