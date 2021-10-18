@@ -62,7 +62,7 @@
                     print("Error connecting to SQL Server.");
                     die(print_r($e));
                 }
-                
+                echo "in nav bar";
                 $courses = $conn->query("SELECT DISTINCT code FROM [dbo].[material]");
                 echo "<div class='col-md-5 col-lg-5'>";
                 echo "<div class='mainmenu nav'><ul id='nav'>";
