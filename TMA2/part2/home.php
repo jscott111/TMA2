@@ -67,7 +67,8 @@
                 echo "<div class='col-md-5 col-lg-5'>";
                 echo "<div class='mainmenu nav'><ul id='nav'>";
                 foreach($courses as $course){
-                    echo "<li class='menuborder'><a>" . $course['name'] . "</a><ul>";
+                    $name = $conn->query("SELECT DISTINCT name FROM [dbo].[material] WHERE code='" . $course['code'] . "'");
+                    echo "<li class='menuborder'><a>" . $name . "</a><ul>";
                     $units = $conn->query("SELECT DISTINCT unit FROM [dbo].[material] WHERE code='" . $course['code'] . "'");
                     foreach($units as $unit){
                         echo "<li class='sub-sub-menu'><a>" . $unit['unit'] . "</a><ul>";
