@@ -63,7 +63,7 @@
                     die(print_r($e));
                 }
                 
-                $courses = $conn->query("SELECT DISTINCT code, name FROM [dbo].[material]");
+                $courses = $conn->query("SELECT DISTINCT code FROM [dbo].[material]");
                 echo "<div class='col-md-5 col-lg-5'>";
                 echo "<div class='mainmenu nav'><ul id='nav'>";
                 foreach($courses as $course){
