@@ -1344,7 +1344,7 @@ it should be.
             <subUnit>
                 <number>1</number>
                 <content>/+Ajax/+
-                    /$ /#4.1 Intro/#
+                    /$ /#5.1 Intro/#
                     /$
                     /$Ajax is a technology that uses XML and JSON to speed up the client-side to server-side communication
                     and experience. In traditional web applications the web page is stalled until the server has processed the
@@ -1367,7 +1367,7 @@ it should be.
             <subUnit>
                 <number>2</number>
                 <content>/+Ajax/+
-                    /$ /#4.2 Detecting the Return of Data/#
+                    /$ /#5.2 Detecting the Return of Data/#
                     /$
                     /$The best way to know when to know the data has been back from the server is to place an event
                     listener on it to detect "readystatechange" and to take action upon that change. Also, we should check
@@ -1390,7 +1390,7 @@ it should be.
             <subUnit>
                 <number>3</number>
                 <content>/+Ajax/+
-                    /$ /#4.3 Error Catching/#
+                    /$ /#5.3 Error Catching/#
                     /$
                     /$It is good programming practice to nestle these requests in a try catch block to avoid critical errors. For example:
                     /$
