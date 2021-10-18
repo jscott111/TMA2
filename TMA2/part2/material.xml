@@ -1080,8 +1080,8 @@ it should be.
                     /$
                     /$External stylesheets are a stylesheet that is not embedded or in-line. These are CSS files stored in
                     somewhere seperate from the web page. Using the link element, we can link the html file and css file
-                    together by specifying 'rel' (short for relationship) to be "stylesheet", 'type' set to "text/css" to
-                    indicate the contents are written in CSS, and 'href' containing the location of the stylesheet.
+                    together by specifying /^rel/^ (short for relationship) to be "stylesheet", /^type/^ set to "text/css" to
+                    indicate the contents are written in CSS, and /^href/^ containing the location of the stylesheet.
                     For example:
                     /$
                     /$/@/lthead/gt
