@@ -207,7 +207,7 @@
             <correct>a</correct>
         </question>
         <question>
-            <text>Lifejackets are designed to keep most unconcious people's heads up and out of the water. True or False?</text>
+            <text>Lifejackets are designed to keep most unconcious people/^s heads up and out of the water. True or False?</text>
             <answera>
                 <letter>a</letter>
                 <text>True</text>
@@ -247,7 +247,7 @@
             <correct>d</correct>
         </question>
         <question>
-            <text>It is recommended to have all passengers aboard the vessel wear their floatation devices at all times due to an emergency situation's sudden occurance. True or False?</text>
+            <text>It is recommended to have all passengers aboard the vessel wear their floatation devices at all times due to an emergency situation/^s sudden occurance. True or False?</text>
             <answera>
                 <letter>a</letter>
                 <text>True</text>
