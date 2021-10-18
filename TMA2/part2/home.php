@@ -67,7 +67,7 @@
                 echo "<div class='col-md-5 col-lg-5'>";
                 echo "<div class='mainmenu nav'><ul id='nav'>";
                 foreach($courses as $course){
-                    $result = $conn->query("SELECT DISTINCT courseName FROM [dbo].[material] WHERE code='" . $course['code'] . "'");
+                    $result = $conn->query("SELECT courseName FROM [dbo].[material] WHERE code='" . $course['code'] . "'");
                     foreach($result as $result){
                         $name = $result['courseName'];
                     }
