@@ -39,7 +39,7 @@
                         echo "<h3 style='margin-left: 20px; margin-top: 20px; color: red;'>Error creating your account, username and password must not be null</h3>";
                     }else{
                         echo "Signed Up";
-                        navBar($username, $password);
+                        //navBar($username, $password);
                     }
                 }else{
                     echo "<h3 style='margin-left: 20px; margin-top: 20px; color: red;'>Username already exists<br>Please try another username</h3>";
@@ -49,11 +49,11 @@
                     echo "<h3 style='margin-left: 20px; margin-top: 20px; color: red;'>Incorrect username or password</h3>";
                 }else{
                     echo "Logged In";
-                    navBar($username, $password);
+                    //navBar($username, $password);
                 }
             }else{
                 echo "Logged In";
-                navBar($username, $password);
+                //navBar($username, $password);
             }
 
             function navBar($username, $password){
