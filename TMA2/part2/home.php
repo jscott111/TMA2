@@ -38,7 +38,6 @@
                     if(!($conn->query($sql))){
                         echo "<h3 style='margin-left: 20px; margin-top: 20px; color: red;'>Error creating your account, username and password must not be null</h3>";
                     }else{
-                        echo "Signed Up";
                         navBar($username, $password);
                     }
                 }else{
@@ -48,11 +47,9 @@
                 if(!($conn->query("SELECT id FROM [dbo].[users] WHERE username='" . $username . "' AND pword='" . $password . "'"))){
                     echo "<h3 style='margin-left: 20px; margin-top: 20px; color: red;'>Incorrect username or password</h3>";
                 }else{
-                    echo "Logged In";
                     navBar($username, $password);
                 }
             }else{
-                echo "Logged In";
                 navBar($username, $password);
             }
 
@@ -65,7 +62,7 @@
                     print("Error connecting to SQL Server.");
                     die(print_r($e));
                 }
-                echo "in nav bar";
+                
                 $courses = $conn->query("SELECT DISTINCT code FROM [dbo].[material]");
                 echo "<div class='col-md-5 col-lg-5'>";
                 echo "<div class='mainmenu nav'><ul id='nav'>";
