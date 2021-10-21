@@ -12,7 +12,7 @@ a {
     display: block;
     color: black;
     text-decoration: underline;
-    margin-right: 8px;
+    margin-right: 5px;
 }
 table {
     border: 1px solid black;
@@ -27,7 +27,7 @@ table {
     background-color: #111;
 }
 body {
-    font-family:Arial;
+    font-family: Arial;
     margin: 0;
 }
 .active {
