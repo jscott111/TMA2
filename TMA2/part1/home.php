@@ -29,8 +29,7 @@
                 }
 
                 if(!$exists){
-                    $sql = "INSERT INTO bookmarks.users (create_time, update_time, username, pword)
-                    VALUES ('" . date("Y-m-d H:i:s") . "', '" . date("Y-m-d H:i:s") . "', '" . $username . "', '" . $password . "');";
+                    $sql = "INSERT INTO bookmarks.users (username, pword) VALUES ('" . $username . "', '" . $password . "');";
 
                     if(!($database->query($sql))){
                         echo "<h3 style='margin-left: 20px; margin-top: 20px; color: red;'>Error creating your account</h3>";
