@@ -21,7 +21,7 @@
 
             echo "IN";
         
-            $result = $database->query("SELECT grade FROM [dbo].[grades] WHERE user='" . $user . "' AND course=" . $course);
+            $result = $database->query("SELECT grade FROM [dbo].[grades] WHERE username='" . $user . "' AND course=" . $course);
             foreach($result as $results){
                 $oldGrade = $results['grade'];
             }
@@ -29,10 +29,10 @@
             echo "GRADE:" . $oldGrade;
         
             if($result->num_rows > 0 && $grade > $oldGrade){
-                $database->query("UPDATE [dbo].[grades] SET grade=" . $grade . " WHERE user='" . $user . "' AND course=" . $course);
+                $database->query("UPDATE [dbo].[grades] SET grade=" . $grade . " WHERE username='" . $user . "' AND course=" . $course);
             }
             else{
-                $database->query("INSERT INTO [dbo].[grades] (user, course, grade) VALUES ('" . $user . "', " . $course . ", " . $grade . ")");
+                $database->query("INSERT INTO [dbo].[grades] (username, course, grade) VALUES ('" . $user . "', " . $course . ", " . $grade . ")");
             }
         
             echo "DONE";
