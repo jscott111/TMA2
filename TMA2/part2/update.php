@@ -8,6 +8,8 @@
             $pass = $_POST['password'];
             $course = $_POST['course'];
             $grade = $_POST['grade'];
+            $DBGrade = 0;
+        
             try {
                  $conn = new PDO("sqlsrv:server = tcp:jscott11.database.windows.net,1433; Database = lms", "jscott11", "3557321Joh--");
                  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
