@@ -23,7 +23,7 @@
                 $currentGrade = $results['grade'];
             }
 
-            if($result->num_rows == 0){
+            if($result->rowCount() == 0){
                 $conn->query("INSERT INTO [dbo].[grades] (username, course, grade) VALUES ('" . $user . "', " . $course . ", " . $grade . ")");
             }
             else if($grade > $currentGrade){
