@@ -21,9 +21,6 @@
                 $DBGrade = $results['grade'];
             }
 
-
-            echo $DBGrade;
-
             if($grade > $DBGrade){
                 if($result->num_rows == 0){
                     $conn->query("INSERT INTO [dbo].[grades] (username, course, grade) VALUES ('" . $user . "', " . $course . ", " . $grade . ")");
@@ -32,8 +29,6 @@
                     $conn->query("UPDATE [dbo].[grades] SET grade=" . $grade . " WHERE username='" . $user . "' AND course=" . $course);
                 }
             }
-
-            echo "DONE";
 
             echo "<form id='homeForm' action='home.php' method='POST'>";
             echo "<input type='hidden' name='username' value='" . $user .  "'>";
