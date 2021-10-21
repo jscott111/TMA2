@@ -21,12 +21,12 @@
         
             $result = $database->query("SELECT grade FROM [dbo].[grades] WHERE user='" . $user . "' AND course=" . $course);
             foreach($result as $results){
-                $DBGrade = $results['grade'];
+                $oldGrade = $results['grade'];
             }
             
-            echo "GRADE:" . $DBGrade;
+            echo "GRADE:" . $oldGrade;
         
-            if($grade > $DBGrade){
+            if($grade > $oldGrade){
                 if($result->num_rows == 0){
                     $database->query("INSERT INTO [dbo].[grades] (user, course, grade) VALUES ('" . $user . "', " . $course . ", " . $grade . ")");
                 }
