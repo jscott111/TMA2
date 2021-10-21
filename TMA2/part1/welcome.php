@@ -10,7 +10,7 @@
         </div>
 
         <div style="float: right;">
-            <h2 style="margin-right: 40px;">Top 10 Bookmarks</h2>
+            <h2 style="margin-right: 30px;">Top 10 Bookmarks</h2>
             <ol>
                 <?php
                     try {
