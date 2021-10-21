@@ -8,7 +8,7 @@
             $pass = $_POST['password'];
             $course = $_POST['course'];
             $grade = $_POST['grade'];
-            $DBGrade = 0;
+            $currentGrade = 0;
         
             try {
                  $conn = new PDO("sqlsrv:server = tcp:jscott11.database.windows.net,1433; Database = lms", "jscott11", "3557321Joh--");
@@ -20,13 +20,13 @@
              }
             $result = $conn->query("SELECT grade FROM [dbo].[grades] WHERE username='" . $user . "' AND course=" . $course);
             foreach($result as $results){
-                $DBGrade = $results['grade'];
+                $currentGrade = $results['grade'];
             }
 
             if($result->num_rows == 0){
                 $conn->query("INSERT INTO [dbo].[grades] (username, course, grade) VALUES ('" . $user . "', " . $course . ", " . $grade . ")");
             }
-            else if($grade > $DBGrade){
+            else if($grade > $currentGrade){
                 $conn->query("UPDATE [dbo].[grades] SET grade=" . $grade . " WHERE username='" . $user . "' AND course=" . $course);
             }
 
