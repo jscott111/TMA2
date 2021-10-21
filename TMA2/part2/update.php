@@ -26,7 +26,7 @@
                 $oldGrade = $results['grade'];
             }
             
-            echo "GRADE:" . $oldGrade;
+            echo "GRADE";
         
             if($result->num_rows > 0 && $grade > $oldGrade){
                 $database->query("UPDATE [dbo].[grades] SET grade=" . $grade . " WHERE username='" . $user . "' AND course=" . $course);
