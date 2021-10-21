@@ -17,6 +17,8 @@
                  die(print_r($e));
              }
 
+            echo "IN";
+        
             $result = $database->query("SELECT grade FROM [dbo].[grades] WHERE user='" . $user . "' AND course=" . $course);
             foreach($result as $results){
                 $DBGrade = $results['grade'];
