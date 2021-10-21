@@ -16,7 +16,7 @@
                  print("Error connecting to SQL Server.");
                  die(print_r($e));
              }
-            $result = $conn->query("SELECT grade FROM [dbo].[grades] WHERE user='" . $user . "' AND course=" . $course);
+            $result = $conn->query("SELECT grade FROM [dbo].[grades] WHERE username='" . $user . "' AND course=" . $course);
             foreach($result as $results){
                 $DBGrade = $results['grade'];
             }
@@ -26,10 +26,10 @@
 
             if($grade > $DBGrade){
                 if($result->num_rows == 0){
-                    $conn->query("INSERT INTO [dbo].[grades] (user, course, grade) VALUES ('" . $user . "', " . $course . ", " . $grade . ")");
+                    $conn->query("INSERT INTO [dbo].[grades] (username, course, grade) VALUES ('" . $user . "', " . $course . ", " . $grade . ")");
                 }
                 else{
-                    $conn->query("UPDATE [dbo].[grades] SET grade=" . $grade . " WHERE user='" . $user . "' AND course=" . $course);
+                    $conn->query("UPDATE [dbo].[grades] SET grade=" . $grade . " WHERE username='" . $user . "' AND course=" . $course);
                 }
             }
 
