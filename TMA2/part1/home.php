@@ -70,7 +70,7 @@
                     die(print_r($e));
                 }
 
-                $result = $database->query("SELECT id FROM [dbo].[users] WHERE username='" . $username . "' AND pword='" . $password . "'");
+                $result = $conn->query("SELECT id FROM [dbo].[users] WHERE username='" . $username . "' AND pword='" . $password . "'");
 
                 foreach($result as $row){
                     $userid = $row['id'];
