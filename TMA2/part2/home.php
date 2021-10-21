@@ -220,8 +220,8 @@
         <br>
         <br>
         <br>
-        <!--<div class = "results"><div id = "results" style="position: fixed;"></div></div>
-        <div id="body" style="margin-left: 20px; margin-bottom: 100px; margin-right: 30%;"></div>-->
+        <div class = "results"><div id = "results" style="position: fixed;"></div></div>
+        <div id="body" style="margin-left: 20px; margin-bottom: 100px; margin-right: 30%;"></div>
 
         <script type="text/javascript">
             // window.addEventListener('pageshow', function() {
