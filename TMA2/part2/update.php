@@ -24,7 +24,7 @@
                 $DBGrade = $results['grade'];
             }
             
-            echo $DBGrade;
+            echo "GRADE:" . $DBGrade;
         
             if($grade > $DBGrade){
                 if($result->num_rows == 0){
