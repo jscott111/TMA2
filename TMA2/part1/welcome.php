@@ -13,11 +13,16 @@
             <h2 style="margin-right: 50px;">Top 10 Bookmarks</h2>
             <ol>
                 <?php
-                    if (!($database = new mysqli("127.0.0.1:3306", "root", "3557321Joh--", "bookmarks"))){
-                        echo "Failed to connect";
+                    try {
+                        $conn = new PDO("sqlsrv:server = tcp:jscott11.database.windows.net,1433; Database = bookmarks", "jscott11", "3557321Joh--");
+                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    }
+                    catch (PDOException $e) {
+                        print("Error connecting to SQL Server.");
+                        die(print_r($e));
                     }
 
-                    $result = $database->query("SELECT link FROM bookmarks.marks GROUP BY link ORDER BY COUNT(id) DESC LIMIT 10;");
+                    $result = $database->query("SELECT link FROM [dbo].[marks] GROUP BY link ORDER BY COUNT(id) DESC LIMIT 10;");
                     foreach($result as $row){
                         echo "<br><li style='padding: 10px;'><a href='https://" . $row['link'] . "' target='_blank'>" . $row['link'] . "</a></li>";
                     }
