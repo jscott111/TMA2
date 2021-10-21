@@ -11,16 +11,21 @@
         </div>
 
         <?php
-            if (!($database = new mysqli("127.0.0.1:3306", "root", "3557321Joh--", "bookmarks"))){
-                echo "Failed to connect";
-            }
+            try {
+                 $conn = new PDO("sqlsrv:server = tcp:jscott11.database.windows.net,1433; Database = bookmarks", "jscott11", "3557321Joh--");
+                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+             }
+             catch (PDOException $e) {
+                 print("Error connecting to SQL Server.");
+                 die(print_r($e));
+             }
 
             $username = $_POST['username'];
             $password = $_POST['password'];
             $userid = 0;
 
             if(isset($_POST['signup'])){
-                $result = $database->query("SELECT username FROM bookmarks.users");
+                $result = $conn->query("SELECT username FROM [dbo].[users]");
                 $exists = false;
                 foreach($result as $name){
                     if($username == $name['username']){
@@ -29,9 +34,9 @@
                 }
 
                 if(!$exists){
-                    $sql = "INSERT INTO bookmarks.users (username, pword) VALUES ('" . $username . "', '" . $password . "');";
+                    $sql = "INSERT INTO [dbo].[users] (username, pword) VALUES ('" . $username . "', '" . $password . "');";
 
-                    if(!($database->query($sql))){
+                    if(!($conn->query($sql))){
                         echo "<h3 style='margin-left: 20px; margin-top: 20px; color: red;'>Error creating your account</h3>";
                     }else{
                         display($username, $password);
@@ -40,7 +45,7 @@
                     echo "<h3 style='margin-left: 20px; margin-top: 20px; color: red;'>Username already exists<br>Please try another username</h3>";
                 }
             }else if(isset($_POST['login'])){
-                $result = $database->query("SELECT id FROM bookmarks.users WHERE username='" . $username . "' AND pword='" . $password . "'");
+                $result = $conn->query("SELECT id FROM [dbo].[users] WHERE username='" . $username . "' AND pword='" . $password . "'");
 
                 foreach($result as $row){
                     $userid = $row['id'];
@@ -56,17 +61,22 @@
             }
 
             function display($username, $password){
-                if (!($database = new mysqli("127.0.0.1:3306", "root", "3557321Joh--", "bookmarks"))){
-                    echo "Failed to connect";
+                try {
+                    $conn = new PDO("sqlsrv:server = tcp:jscott11.database.windows.net,1433; Database = bookmarks", "jscott11", "3557321Joh--");
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                }
+                catch (PDOException $e) {
+                    print("Error connecting to SQL Server.");
+                    die(print_r($e));
                 }
 
-                $result = $database->query("SELECT id FROM bookmarks.users WHERE username='" . $username . "' AND pword='" . $password . "'");
+                $result = $database->query("SELECT id FROM [dbo].[users] WHERE username='" . $username . "' AND pword='" . $password . "'");
 
                 foreach($result as $row){
                     $userid = $row['id'];
                 }
 
-                $result = $database->query("SELECT link FROM bookmarks.marks INNER JOIN bookmarks.users ON marks.id = users.id WHERE username='" . $username . "' AND pword='" . $password . "';");
+                $result = $conn->query("SELECT link FROM [dbo].[marks] INNER JOIN [dbo].[users] ON marks.id = users.id WHERE username='" . $username . "' AND pword='" . $password . "';");
                 echo "<table>";
                 foreach($result as $row){
                     echo "<form action='delete.php' method='POST'><tr><th style='border: 1px solid black;'><a href='https://";
