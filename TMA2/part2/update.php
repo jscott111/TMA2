@@ -21,13 +21,11 @@
                 $DBGrade = $results['grade'];
             }
 
-            if($grade > $DBGrade){
-                if($result->num_rows == 0){
-                    $conn->query("INSERT INTO [dbo].[grades] (username, course, grade) VALUES ('" . $user . "', " . $course . ", " . $grade . ")");
-                }
-                else{
-                    $conn->query("UPDATE [dbo].[grades] SET grade=" . $grade . " WHERE username='" . $user . "' AND course=" . $course);
-                }
+            if($result->num_rows == 0){
+                $conn->query("INSERT INTO [dbo].[grades] (username, course, grade) VALUES ('" . $user . "', " . $course . ", " . $grade . ")");
+            }
+            else if($grade > $DBGrade){
+                $conn->query("UPDATE [dbo].[grades] SET grade=" . $grade . " WHERE username='" . $user . "' AND course=" . $course);
             }
 
             echo "<form id='homeForm' action='home.php' method='POST'>";
