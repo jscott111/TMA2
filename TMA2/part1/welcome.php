@@ -9,7 +9,7 @@
             <h2 style = "margin-left: 15px;">Your Bookmarks</h2>
         </div>
 
-        <div style="float: right; height: 700px; border: 1px solid black;">
+        <div style="float: right; height: 600px; border: 1px solid black;">
             <h2 style="margin-right: 30px;">Top 10 Bookmarks</h2>
             <ol>
                 <?php
