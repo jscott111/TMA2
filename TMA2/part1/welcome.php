@@ -22,7 +22,7 @@
                         die(print_r($e));
                     }
 
-                    $result = $conn->query("SELECT link FROM [dbo].[marks] GROUP BY link ORDER BY COUNT(id) DESC LIMIT 10;");
+                    $result = $conn->query("SELECT TOP 10 link FROM [dbo].[marks] GROUP BY link ORDER BY COUNT(id) DESC");
                     foreach($result as $row){
                         echo "<br><li style='padding: 10px;'><a href='https://" . $row['link'] . "' target='_blank'>" . $row['link'] . "</a></li>";
                     }
