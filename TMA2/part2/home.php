@@ -78,7 +78,7 @@
                                 $cont = $content['content'];
                             }
                             $string = parser($cont);
-                            echo "<li><a href='javascript:display(\"$string\")'>" . $unit['unit'] . "." . $subunit['subunit'] . "</a></li>";
+                            echo "<li><a>" . $unit['unit'] . "." . $subunit['subunit'] . "</a></li>";
                         }
                         echo "</ul></li>";
                     }
