@@ -75,7 +75,7 @@
                         foreach($subunits as $subunit){
                             $result = $conn->query("SELECT courseContent FROM [dbo].[material] WHERE code='" . $course['code'] . "' AND unit='" . $unit['unit'] . "' AND subunit='" . $subunit['subunit'] . "'");
                             foreach($result as $content){
-                                $cont = $content['content'];
+                                $cont = $content['courseContent'];
                             }
                             $string = parser($cont);
                             echo "<li><a href='javascript:display(\"$string\")'>" . $unit['unit'] . "." . $subunit['subunit'] . "</a></li>";
