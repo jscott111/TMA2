@@ -8,6 +8,7 @@
             $pass = $_POST['password'];
             $course = $_POST['course'];
             $grade = $_POST['grade'];
+        
             try {
                  $conn = new PDO("sqlsrv:server = tcp:jscott11.database.windows.net,1433; Database = lms", "jscott11", "3557321Joh--");
                  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -26,13 +27,11 @@
             
             echo "GRADE:" . $oldGrade;
         
-            if($grade > $oldGrade){
-                if($result->num_rows == 0){
-                    $database->query("INSERT INTO [dbo].[grades] (user, course, grade) VALUES ('" . $user . "', " . $course . ", " . $grade . ")");
-                }
-                else{
-                    $database->query("UPDATE [dbo].[grades] SET grade=" . $grade . " WHERE user='" . $user . "' AND course=" . $course);
-                }
+            if($result->num_rows > 0 && $grade > $oldGrade){
+                $database->query("UPDATE [dbo].[grades] SET grade=" . $grade . " WHERE user='" . $user . "' AND course=" . $course);
+            }
+            else{
+                $database->query("INSERT INTO [dbo].[grades] (user, course, grade) VALUES ('" . $user . "', " . $course . ", " . $grade . ")");
             }
         
             echo "DONE";
