@@ -21,7 +21,9 @@
             foreach($result as $results){
                 $DBGrade = $results['grade'];
             }
-
+            
+            echo $DBGrade;
+        
             if($grade > $DBGrade){
                 if($result->num_rows == 0){
                     $database->query("INSERT INTO [dbo].[grades] (user, course, grade) VALUES ('" . $user . "', " . $course . ", " . $grade . ")");
@@ -30,6 +32,9 @@
                     $database->query("UPDATE [dbo].[grades] SET grade=" . $grade . " WHERE user='" . $user . "' AND course=" . $course);
                 }
             }
+        
+            echo "DONE";
+        
             echo "<form id='homeForm' action='home.php' method='POST'>";
             echo "<input type='hidden' name='username' value='" . $user .  "'>";
             echo "<input type='hidden' name='password' value='" . $pass . "'>";
