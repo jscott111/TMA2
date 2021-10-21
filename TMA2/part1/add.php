@@ -4,11 +4,16 @@
     </head>
     <body>
         <?php
-            if (!($database = new mysqli("127.0.0.1:3306", "root", "3557321Joh--", "bookmarks"))){
-                echo "Failed to connect";
+            try {
+                $conn = new PDO("sqlsrv:server = tcp:jscott11.database.windows.net,1433; Database = bookmarks", "jscott11", "3557321Joh--");
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            }
+            catch (PDOException $e) {
+                print("Error connecting to SQL Server.");
+                die(print_r($e));
             }
 
-            $database->query("INSERT INTO bookmarks.marks (link, id) VALUES ('" . $_POST['addNewLink'] . "', '" . $_POST['addUserid'] . "');");
+            $conn->query("INSERT INTO [dbo].[marks] (link, id) VALUES ('" . $_POST['addNewLink'] . "', '" . $_POST['addUserid'] . "');");
 
             echo "<form id='form' action='home.php' method='POST'>";
             echo "<input id='link' name='link' type='hidden' value='" . $_POST['addNewLink'] . "'></input>";
