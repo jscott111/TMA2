@@ -110,7 +110,7 @@
                 <br><br><img src="Images/gradeCode.png" alt="Grade Updating Code">
             </p>
 
-            Click [here](https://tmapart2.azurewebsites.net/TMA2/part2/start.php) to open the application.</a>
+            <a href="https://tmapart2.azurewebsites.net/TMA2/part2/start.php" target="_blank">Click here to open the application.</a>
             <a href="https://github.com/jscott111/TMA2/blob/main/TMA2/part2/start.php" target="_blank">start.php</a>
             <a href="https://github.com/jscott111/TMA2/blob/main/TMA2/part2/home.php" target="_blank">home.php</a>
             <a href="https://github.com/jscott111/TMA2/blob/main/TMA2/part2/update.php" target="_blank">update.php</a>
