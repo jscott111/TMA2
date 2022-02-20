@@ -1,10 +1,6 @@
 # TMA2
 
 <html>
-    <head>
-        <meta charset = "utf-8">
-        <title>Assignment 2</title>
-    </head>
     <body>
         <h1>CS466</h1>
         <h2>Assignment 2</h2>
