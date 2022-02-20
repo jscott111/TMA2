@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset = "utf-8">
-        <title>Assignment 1</title>
+        <title>Assignment 2</title>
     </head>
     <body>
         <h1>CS466</h1>
